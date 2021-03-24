@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>pieRose</title>
+    </head>
+    <body>
+        <div id='main' style="width:800px;height:350px;"></div>
+    </body>
+    <script src='https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js'></script>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+        var option = {
+            title:{
+                text:'按类型统计',
+                left:'left'
+            },
+            color:['#f99021',"#3baf1c","#eba1fc","#765cdb","#36dc7c"],
+            legend: {
+                orient: 'vertical',
+                icon:'circle',
+                itemHeight: 7, //圆圈的大小设定
+                itemWidth: 7,
+                right:200,
+                top:120,
+                bottom:20
+            },
+            tooltip:{ //鼠标悬停展示信息
+                trgger:'item',
+                formatter: '{a} <br/>{b}:{c} ({d}%)'
+            },
+            series: [
+                {
+                    name: '按类型统计',
+                    type: 'pie',
+                    radius: [23, 120],
+                    center: ['30%', '40%'],
+                    roseType: 'area',
+                    data: [
+                        {value: 40, name: 'rose 1'},
+                        {value: 38, name: 'rose 2'},
+                        {value: 32, name: 'rose 3'},
+                        {value: 30, name: 'rose 4'},
+                        {value: 28, name: 'rose 5'},
+                    ],
+                    itemStyle: {
+                        borderRadius: 8,
+                        normal:{
+                            label:{ //label显示的位置
+                                show:true,
+                                formatter:'{c}\n',
+                                padding:[0,-30]
+                            },
+                            labelLine:{
+                                length2:40
+                            }
+                        }
+                    },
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</html>
